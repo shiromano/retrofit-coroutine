@@ -16,6 +16,11 @@ and utilise threads spawned (or allocated from thread pool) by the web container
 All processing logic, downstream service calls, database queries all execute on
 a single thread assigned to the request.
 
+In this demo project, we use thread pool `Dispatchers.IO` and `async` coroutine builder
+to execute remote HTTP calls. The HTTP calls are non-blocking and suspendable. But this is
+not ideal and should not be applied in real production. The reason is explained in following
+sections.
+
 === Spawn a Thread Pool inside the Application
 Consider that we are providing an API to customers. And in order to serve the information we need
 to call a dozen of downstream services and also issue a dozen of database queries.
