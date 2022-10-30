@@ -1,0 +1,87 @@
+= README
+
+== Project Purpose
+
+This project is to demonstrate the feasibility of applying
+Spring Web, Kotlin coroutines, and Retrofit2 together.
+
+One of the common issue that backend engineers face often is calling
+databases or downstream services. One solution is to migrate to event driven design, but it will need quite some effort.
+And more often you'd like to parallelize these calls to achieve a low latency.
+
+And make parallel calls is not easy and error-prone. This is partly due to the container design behind.
+Container based solutions like Spring, Java EE, Servlets, are hosted in web containers (EJB containers)
+And utilise a thread spawned (or allocated from thread pool) by the web container.
+All processing logic, downstream service calls, database queries all execute on
+this single thread.
+
+=== Spawn a Thread Pool inside the Application
+Consider that we are providing an API to customers. In order to serve the information we need
+to call a dozen of downstream services and also issue a dozen of database queries. If we make requests and queries
+in a sequential way, then the latency could become intolerable. As these requests and queries are not
+dependent, we decide to make parallel calls.
+
+There's nothing stops you from creating your own thread pool in frameworks like Spring.
+We could spawn a thread pool and then assign the downstream calls to it.
+So that calls are parallelized and it seems the problem is solved.
+
+But it is not that simple. First problem is how many threads should the thread pool have? is it fixed
+thread pool or with lower and higher limits? If we are having too many, we are wasting resources and
+if we are having too few, the calls will still be waiting for the thread to complete the previously submitted
+tasks.
+
+And the second problem is that should we create a thread pool when receiving an incoming request or
+when the app starts up? Neither way is ideal, because the first one would consume resources and we need
+to take care of shutting down, and for the second, we need to remember that when there are a high volume
+of calls from customers at the same time, the thread pool is not helpful because the tasks are just queued and waiting
+to be picked up.
+
+=== Retrofit with Kotlin Coroutines ⚠️
+Retrofit supports suspend functions
+```
+@GET
+suspend fun getUsers(): List<User>
+```
+But we are interested in NOT only the happy path result but also
+the failed requests' HTTP status codes and header information.
+
+Although in this demo project we did this to prove that
+Kotlin coroutines could work with Retrofit,
+this should not be applied ⛔ in serious product.
+
+=== Retrofit without Kotlin Coroutines
+Retrofit original response type is `Callable<T>`
+```
+@GET("users")
+fun getUsers(): Callable<List<User>>
+```
+The synchronous method `execute()` on `Callable`  will block executing threads and should be avoided.
+We need to use the `enqueue()` method and craft customised code to utilise asynchronous calls. ✅
+
+== Alternative Solutions with Spring WebFlux
+
+Spring WebFlux is an alternative to Spring Web which is built to
+work with the web containers e.g. Tomcat, which is a solution
+dates back to Java EE, J2EE, JSP and Servlets.
+
+WebFlux is not some framework on top of Web or extra additional feature to Web.
+It's another web framework that can replace Web. And it's build
+with Reactive Streams in mind, with Netty as it's underlying
+network server taking advantage of the Event Loops and the Project Reactor,
+and thus no Java EE web containers anymore.
+
+== WebFlux Still Needs Non Blocking Support
+You may already notice that the reason for our concurrency problem roots in
+blocking I/O, that means remote calls are just blocking the threads and waiting
+for remote response without doing anything.
+
+WebFlux needs non-blocking Web clients and database drivers. Take
+non-blocking web client as an example, when it sends out a request, it yields
+the thread and when the response arrives it will resume execution and
+in this way the thread will never be blocked. Spring WebClient and R2DBC are non-blocking.
+MongoDB and PostgresDB provide non-blocking drivers.
+
+== Other Frameworks with Native Concurrency Support on JVM
+
+- Vertx (Java, Kotlin) built on top of Netty, with Event Loops (white labelled as Verticle) and Event Buses
+- Akka (Scala), actor model
