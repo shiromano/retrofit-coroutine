@@ -17,7 +17,7 @@ repositories {
 
 dependencies {
 //	implementation("org.springframework.boot:spring-boot-starter-data-mongodb-reactive")
-	implementation("org.springframework.boot:spring-boot-starter-webflux")
+	implementation("org.springframework.boot:spring-boot-starter-web")
 
 	// kotlin and reactor
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
@@ -30,7 +30,7 @@ dependencies {
 	implementation("com.squareup.retrofit2:converter-gson:2.9.0")
 
 	implementation("com.squareup.okhttp3:logging-interceptor:4.10.0")
-	implementation("com.squareup.okhttp3:okhttp:4.9.1")
+	implementation("com.squareup.okhttp3:okhttp:4.10.0")
 
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("io.projectreactor:reactor-test")

@@ -15,3 +15,111 @@
 2022-10-30 11:31:02,472 INFO okhttp3.internal.platform.Platform [OkHttp https://my-json-server.typicode.com/...] <-- 200 https://my-json-server.typicode.com/shiromano/json-mocks/customers (640ms, unknown-length body)
 2022-10-30 11:31:02,472 INFO okhttp3.internal.platform.Platform [OkHttp https://my-json-server.typicode.com/...] <-- 200 https://my-json-server.typicode.com/shiromano/json-mocks/coins (640ms, unknown-length body)
 2022-10-30 11:31:02,481 INFO com.codeora.coroutine.PartnerService [DefaultDispatcher-worker-1] got coins
+2022-10-30 11:36:47,863 INFO org.springframework.boot.StartupInfoLogger [main] Starting CoroutineApplicationKt using Java 19 on Shilongs-MacBook-Pro-2.local with PID 80746 (/Users/shilongzhao/IdeaProjects/coroutine/build/classes/kotlin/main started by shilongzhao in /Users/shilongzhao/IdeaProjects/coroutine)
+2022-10-30 11:36:47,864 DEBUG org.springframework.boot.StartupInfoLogger [main] Running with Spring Boot v2.7.5, Spring v5.3.23
+2022-10-30 11:36:47,864 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
+2022-10-30 11:36:48,493 INFO org.springframework.boot.web.embedded.netty.NettyWebServer [main] Netty started on port 8080
+2022-10-30 11:36:48,498 INFO org.springframework.boot.StartupInfoLogger [main] Started CoroutineApplicationKt in 0.765 seconds (JVM running for 1.16)
+2022-10-30 12:03:14,577 INFO org.springframework.boot.StartupInfoLogger [main] Starting CoroutineApplicationKt using Java 19 on Shilongs-MacBook-Pro-2.local with PID 81132 (/Users/shilongzhao/IdeaProjects/coroutine/build/classes/kotlin/main started by shilongzhao in /Users/shilongzhao/IdeaProjects/coroutine)
+2022-10-30 12:03:14,579 DEBUG org.springframework.boot.StartupInfoLogger [main] Running with Spring Boot v2.7.5, Spring v5.3.23
+2022-10-30 12:03:14,579 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
+2022-10-30 12:03:15,235 INFO org.springframework.boot.web.embedded.netty.NettyWebServer [main] Netty started on port 8080
+2022-10-30 12:03:15,240 INFO org.springframework.boot.StartupInfoLogger [main] Started CoroutineApplicationKt in 0.773 seconds (JVM running for 1.251)
+2022-10-30 12:03:22,146 INFO com.codeora.coroutine.PartnerService [DefaultDispatcher-worker-1] start getting coins
+2022-10-30 12:03:22,147 INFO com.codeora.coroutine.PartnerService [DefaultDispatcher-worker-3] start getting customers
+2022-10-30 12:03:23,175 ERROR org.springframework.core.log.CompositeLog [reactor-http-nio-2] [0bbfd2d8-1]  500 Server Error for HTTP GET "/compound-info"
+java.lang.IllegalArgumentException: Unable to create call adapter for java.util.List<com.codeora.coroutine.parnter.CustomerResp>
+    for method PartnerSpec.getCustomers
+	at retrofit2.Utils.methodError(Utils.java:54)
+	Suppressed: java.lang.IllegalArgumentException: Unable to create call adapter for java.util.List<com.codeora.coroutine.parnter.CoinResp>
+    for method PartnerSpec.getCoins
+		at retrofit2.Utils.methodError(Utils.java:54)
+		at retrofit2.HttpServiceMethod.createCallAdapter(HttpServiceMethod.java:116)
+		at retrofit2.HttpServiceMethod.parseAnnotations(HttpServiceMethod.java:67)
+		at retrofit2.ServiceMethod.parseAnnotations(ServiceMethod.java:39)
+		at retrofit2.Retrofit.loadServiceMethod(Retrofit.java:202)
+		at retrofit2.Retrofit$1.invoke(Retrofit.java:160)
+		at jdk.proxy2/jdk.proxy2.$Proxy54.getCoins(Unknown Source)
+		at com.codeora.coroutine.PartnerService.getCoins$suspendImpl(PartnerService.kt:15)
+		at com.codeora.coroutine.PartnerService$getCoins$1.invokeSuspend(PartnerService.kt)
+		at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+		at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:106)
+		at kotlinx.coroutines.internal.LimitedDispatcher.run(LimitedDispatcher.kt:42)
+		at kotlinx.coroutines.scheduling.TaskImpl.run(Tasks.kt:95)
+		at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:570)
+		at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:750)
+		at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:677)
+		at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:664)
+	Caused by: java.lang.IllegalArgumentException: Could not locate call adapter for java.util.List<com.codeora.coroutine.parnter.CoinResp>.
+  Tried:
+   * retrofit2.CompletableFutureCallAdapterFactory
+   * retrofit2.DefaultCallAdapterFactory
+		at retrofit2.Retrofit.nextCallAdapter(Retrofit.java:272)
+		at retrofit2.Retrofit.callAdapter(Retrofit.java:237)
+		at retrofit2.HttpServiceMethod.createCallAdapter(HttpServiceMethod.java:114)
+		... 15 common frames omitted
+	Suppressed: reactor.core.publisher.FluxOnAssembly$OnAssemblyException: 
+Error has been observed at the following site(s):
+	*__checkpoint ⇢ HTTP GET "/compound-info" [ExceptionHandlingWebHandler]
+Original Stack Trace:
+		at retrofit2.Utils.methodError(Utils.java:54)
+		at retrofit2.HttpServiceMethod.createCallAdapter(HttpServiceMethod.java:116)
+		at retrofit2.HttpServiceMethod.parseAnnotations(HttpServiceMethod.java:67)
+		at retrofit2.ServiceMethod.parseAnnotations(ServiceMethod.java:39)
+		at retrofit2.Retrofit.loadServiceMethod(Retrofit.java:202)
+		at retrofit2.Retrofit$1.invoke(Retrofit.java:160)
+		at jdk.proxy2/jdk.proxy2.$Proxy54.getCustomers(Unknown Source)
+		at com.codeora.coroutine.PartnerService.getCustomers$suspendImpl(PartnerService.kt:25)
+		at com.codeora.coroutine.PartnerService$getCustomers$1.invokeSuspend(PartnerService.kt)
+		at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+		at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:106)
+		at kotlinx.coroutines.internal.LimitedDispatcher.run(LimitedDispatcher.kt:42)
+		at kotlinx.coroutines.scheduling.TaskImpl.run(Tasks.kt:95)
+		at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:570)
+		at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:750)
+		at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:677)
+		at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:664)
+Caused by: java.lang.IllegalArgumentException: Could not locate call adapter for java.util.List<com.codeora.coroutine.parnter.CustomerResp>.
+  Tried:
+   * retrofit2.CompletableFutureCallAdapterFactory
+   * retrofit2.DefaultCallAdapterFactory
+	at retrofit2.Retrofit.nextCallAdapter(Retrofit.java:272)
+	at retrofit2.Retrofit.callAdapter(Retrofit.java:237)
+	at retrofit2.HttpServiceMethod.createCallAdapter(HttpServiceMethod.java:114)
+	at retrofit2.HttpServiceMethod.parseAnnotations(HttpServiceMethod.java:67)
+	at retrofit2.ServiceMethod.parseAnnotations(ServiceMethod.java:39)
+	at retrofit2.Retrofit.loadServiceMethod(Retrofit.java:202)
+	at retrofit2.Retrofit$1.invoke(Retrofit.java:160)
+	at jdk.proxy2/jdk.proxy2.$Proxy54.getCustomers(Unknown Source)
+	at com.codeora.coroutine.PartnerService.getCustomers$suspendImpl(PartnerService.kt:25)
+	at com.codeora.coroutine.PartnerService$getCustomers$1.invokeSuspend(PartnerService.kt)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:106)
+	at kotlinx.coroutines.internal.LimitedDispatcher.run(LimitedDispatcher.kt:42)
+	at kotlinx.coroutines.scheduling.TaskImpl.run(Tasks.kt:95)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:570)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:750)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:677)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:664)
+2022-10-30 12:07:42,767 INFO org.springframework.boot.StartupInfoLogger [main] Starting CoroutineApplicationKt using Java 19 on Shilongs-MacBook-Pro-2.local with PID 81220 (/Users/shilongzhao/IdeaProjects/coroutine/build/classes/kotlin/main started by shilongzhao in /Users/shilongzhao/IdeaProjects/coroutine)
+2022-10-30 12:07:42,770 DEBUG org.springframework.boot.StartupInfoLogger [main] Running with Spring Boot v2.7.5, Spring v5.3.23
+2022-10-30 12:07:42,770 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
+2022-10-30 12:07:43,314 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat initialized with port(s): 8080 (http)
+2022-10-30 12:07:43,321 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
+2022-10-30 12:07:43,322 INFO org.apache.juli.logging.DirectJDKLog [main] Starting service [Tomcat]
+2022-10-30 12:07:43,322 INFO org.apache.juli.logging.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.68]
+2022-10-30 12:07:43,385 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2022-10-30 12:07:43,385 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 567 ms
+2022-10-30 12:07:43,635 INFO org.apache.juli.logging.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
+2022-10-30 12:07:43,642 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat started on port(s): 8080 (http) with context path ''
+2022-10-30 12:07:43,648 INFO org.springframework.boot.StartupInfoLogger [main] Started CoroutineApplicationKt in 1.067 seconds (JVM running for 1.62)
+2022-10-30 12:07:59,236 INFO org.apache.juli.logging.DirectJDKLog [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-10-30 12:07:59,237 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
+2022-10-30 12:07:59,238 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8080-exec-1] Completed initialization in 1 ms
+2022-10-30 12:07:59,264 INFO com.codeora.coroutine.PartnerService [DefaultDispatcher-worker-1] start getting coins
+2022-10-30 12:07:59,265 INFO com.codeora.coroutine.PartnerService [DefaultDispatcher-worker-3] start getting customers
+2022-10-30 12:08:00,303 INFO okhttp3.internal.platform.Platform [OkHttp https://my-json-server.typicode.com/...] --> GET https://my-json-server.typicode.com/shiromano/json-mocks/customers
+2022-10-30 12:08:00,303 INFO okhttp3.internal.platform.Platform [OkHttp https://my-json-server.typicode.com/...] --> GET https://my-json-server.typicode.com/shiromano/json-mocks/coins
+2022-10-30 12:08:00,848 INFO okhttp3.internal.platform.Platform [OkHttp https://my-json-server.typicode.com/...] <-- 200 https://my-json-server.typicode.com/shiromano/json-mocks/customers (544ms, unknown-length body)
+2022-10-30 12:08:00,848 INFO okhttp3.internal.platform.Platform [OkHttp https://my-json-server.typicode.com/...] <-- 200 https://my-json-server.typicode.com/shiromano/json-mocks/coins (544ms, unknown-length body)
+2022-10-30 12:08:00,855 INFO com.codeora.coroutine.PartnerService [DefaultDispatcher-worker-1] got coins
