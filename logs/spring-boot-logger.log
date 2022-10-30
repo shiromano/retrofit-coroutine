@@ -1,0 +1,17 @@
+2022-10-30 11:24:25,924 INFO org.springframework.boot.StartupInfoLogger [main] Starting CoroutineApplicationKt using Java 11.0.15 on Shilongs-MacBook-Pro-2.local with PID 79880 (/Users/shilongzhao/IdeaProjects/coroutine/build/classes/kotlin/main started by shilongzhao in /Users/shilongzhao/IdeaProjects/coroutine)
+2022-10-30 11:24:25,926 DEBUG org.springframework.boot.StartupInfoLogger [main] Running with Spring Boot v2.7.5, Spring v5.3.23
+2022-10-30 11:24:25,928 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
+2022-10-30 11:24:26,842 INFO org.springframework.boot.web.embedded.netty.NettyWebServer [main] Netty started on port 8080
+2022-10-30 11:24:26,851 INFO org.springframework.boot.StartupInfoLogger [main] Started CoroutineApplicationKt in 1.151 seconds (JVM running for 1.672)
+2022-10-30 11:30:41,400 INFO org.springframework.boot.StartupInfoLogger [main] Starting CoroutineApplicationKt using Java 19 on Shilongs-MacBook-Pro-2.local with PID 80545 (/Users/shilongzhao/IdeaProjects/coroutine/build/classes/kotlin/main started by shilongzhao in /Users/shilongzhao/IdeaProjects/coroutine)
+2022-10-30 11:30:41,401 DEBUG org.springframework.boot.StartupInfoLogger [main] Running with Spring Boot v2.7.5, Spring v5.3.23
+2022-10-30 11:30:41,402 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
+2022-10-30 11:30:42,544 INFO org.springframework.boot.web.embedded.netty.NettyWebServer [main] Netty started on port 8080
+2022-10-30 11:30:42,560 INFO org.springframework.boot.StartupInfoLogger [main] Started CoroutineApplicationKt in 1.354 seconds (JVM running for 1.851)
+2022-10-30 11:31:00,794 INFO com.codeora.coroutine.PartnerService [DefaultDispatcher-worker-1] start getting coins
+2022-10-30 11:31:00,794 INFO com.codeora.coroutine.PartnerService [DefaultDispatcher-worker-3] start getting customers
+2022-10-30 11:31:01,831 INFO okhttp3.internal.platform.Platform [OkHttp https://my-json-server.typicode.com/...] --> GET https://my-json-server.typicode.com/shiromano/json-mocks/customers
+2022-10-30 11:31:01,831 INFO okhttp3.internal.platform.Platform [OkHttp https://my-json-server.typicode.com/...] --> GET https://my-json-server.typicode.com/shiromano/json-mocks/coins
+2022-10-30 11:31:02,472 INFO okhttp3.internal.platform.Platform [OkHttp https://my-json-server.typicode.com/...] <-- 200 https://my-json-server.typicode.com/shiromano/json-mocks/customers (640ms, unknown-length body)
+2022-10-30 11:31:02,472 INFO okhttp3.internal.platform.Platform [OkHttp https://my-json-server.typicode.com/...] <-- 200 https://my-json-server.typicode.com/shiromano/json-mocks/coins (640ms, unknown-length body)
+2022-10-30 11:31:02,481 INFO com.codeora.coroutine.PartnerService [DefaultDispatcher-worker-1] got coins
