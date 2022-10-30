@@ -55,6 +55,12 @@ Although in this demo project we did this to prove that
 Kotlin coroutines could work with Retrofit,
 this should not be applied ⛔ in serious product.
 
+We can also return `Response` type with suspend function ✅:
+```
+@GET("users")
+suspend fun getUsers(): Response<List<User>>
+```
+
 === Retrofit without Kotlin Coroutines
 Retrofit original response type is `Callable<T>`
 ```

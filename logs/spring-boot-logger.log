@@ -123,3 +123,26 @@ Caused by: java.lang.IllegalArgumentException: Could not locate call adapter for
 2022-10-30 12:08:00,848 INFO okhttp3.internal.platform.Platform [OkHttp https://my-json-server.typicode.com/...] <-- 200 https://my-json-server.typicode.com/shiromano/json-mocks/customers (544ms, unknown-length body)
 2022-10-30 12:08:00,848 INFO okhttp3.internal.platform.Platform [OkHttp https://my-json-server.typicode.com/...] <-- 200 https://my-json-server.typicode.com/shiromano/json-mocks/coins (544ms, unknown-length body)
 2022-10-30 12:08:00,855 INFO com.codeora.coroutine.PartnerService [DefaultDispatcher-worker-1] got coins
+2022-10-30 22:27:56,668 INFO org.springframework.boot.StartupInfoLogger [main] Starting CoroutineApplicationKt using Java 19 on Shilongs-MacBook-Pro-2.local with PID 87374 (/Users/shilongzhao/IdeaProjects/coroutine/build/classes/kotlin/main started by shilongzhao in /Users/shilongzhao/IdeaProjects/coroutine)
+2022-10-30 22:27:56,669 DEBUG org.springframework.boot.StartupInfoLogger [main] Running with Spring Boot v2.7.5, Spring v5.3.23
+2022-10-30 22:27:56,669 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
+2022-10-30 22:27:57,244 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat initialized with port(s): 8080 (http)
+2022-10-30 22:27:57,249 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
+2022-10-30 22:27:57,250 INFO org.apache.juli.logging.DirectJDKLog [main] Starting service [Tomcat]
+2022-10-30 22:27:57,250 INFO org.apache.juli.logging.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.68]
+2022-10-30 22:27:57,309 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2022-10-30 22:27:57,310 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 611 ms
+2022-10-30 22:27:57,617 INFO org.apache.juli.logging.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
+2022-10-30 22:27:57,624 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat started on port(s): 8080 (http) with context path ''
+2022-10-30 22:27:57,629 INFO org.springframework.boot.StartupInfoLogger [main] Started CoroutineApplicationKt in 1.081 seconds (JVM running for 1.654)
+2022-10-30 22:28:05,935 INFO org.apache.juli.logging.DirectJDKLog [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-10-30 22:28:05,935 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
+2022-10-30 22:28:05,936 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8080-exec-1] Completed initialization in 1 ms
+2022-10-30 22:28:05,960 INFO com.codeora.coroutine.PartnerService [DefaultDispatcher-worker-1] start getting coins
+2022-10-30 22:28:05,962 INFO com.codeora.coroutine.PartnerService [DefaultDispatcher-worker-3] start getting customers
+2022-10-30 22:28:07,001 INFO okhttp3.internal.platform.Platform [OkHttp https://my-json-server.typicode.com/...] --> GET https://my-json-server.typicode.com/shiromano/json-mocks/customers
+2022-10-30 22:28:07,001 INFO okhttp3.internal.platform.Platform [OkHttp https://my-json-server.typicode.com/...] --> GET https://my-json-server.typicode.com/shiromano/json-mocks/coins
+2022-10-30 22:28:07,586 INFO okhttp3.internal.platform.Platform [OkHttp https://my-json-server.typicode.com/...] <-- 200 https://my-json-server.typicode.com/shiromano/json-mocks/coins (584ms, unknown-length body)
+2022-10-30 22:28:07,599 INFO com.codeora.coroutine.PartnerService [DefaultDispatcher-worker-3] got coins
+2022-10-30 22:28:07,601 INFO okhttp3.internal.platform.Platform [OkHttp https://my-json-server.typicode.com/...] <-- 200 https://my-json-server.typicode.com/shiromano/json-mocks/customers (599ms, unknown-length body)
+2022-10-30 22:28:07,602 INFO com.codeora.coroutine.PartnerService [DefaultDispatcher-worker-3] got customers
