@@ -51,9 +51,7 @@ suspend fun getUsers(): List<User>
 But we are interested in NOT only the happy path result but also
 the failed requests' HTTP status codes and header information.
 
-Although in this demo project we did this to prove that
-Kotlin coroutines could work with Retrofit,
-this should not be applied ⛔ in serious product.
+This should not be applied ⛔ in serious product.
 
 We can also return `Response` type with suspend function ✅:
 ```
@@ -69,6 +67,8 @@ fun getUsers(): Callable<List<User>>
 ```
 The synchronous method `execute()` on `Callable`  will block executing threads and should be avoided.
 We need to use the `enqueue()` method and craft customised code to utilise asynchronous calls. ✅
+
+We can also use Retrofit RxJava extension to make remote calls reactive ✅
 
 == Alternative Solutions with Spring WebFlux
 
